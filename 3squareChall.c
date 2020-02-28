@@ -1,5 +1,5 @@
 #pragma config(Sensor, S1,     GyroSense,      sensorEV3_Gyro)
-#pragma config(Sensor, S4,     ColorSense,     sensorEV3_Color)
+#pragma config(Sensor, S4,     ColorSense,     sensorEV3_Color, modeEV3Color_Color)
 #pragma config(Motor,  motorA,          LeftM,         tmotorEV3_Large, PIDControl, driveLeft, encoder)
 #pragma config(Motor,  motorB,           ,             tmotorEV3_Large, openLoop)
 #pragma config(Motor,  motorC,           ,             tmotorEV3_Large, openLoop)
@@ -13,14 +13,30 @@ task main()
 	* Pro Team
 	* Drive around square 3 times
 	*/
-	repeat(forever)
-  {
-    lineTrackLeft(ColorSense, 38, -50, 0);
+
     //*backward(3, rotations, 50);
 		//*setMotor(motorA, 25);
   	//*setMotor(motorD, -25);
   	//*wait(1, seconds);
   	//*stopAllMotors();
+	repeat(forever)
+  {
+  	if (SensorValue[ColorSense]==1)
+  		{
+  			forward(1, rotations, 50);
+  			if (SensorValue[GyroSense]>0)
+  				{
+  					//* Right
+  				}
+  			else
+  			{
+  				if (SensorValue[GyroSense]<0)
+  				{
+  					//* Left
+  				}
+  			}
+  		}
+
   }
 
 }
