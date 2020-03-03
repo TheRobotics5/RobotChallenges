@@ -1,5 +1,4 @@
-#pragma config(Sensor, S1,     GyroSense,      sensorEV3_Gyro)
-#pragma config(Sensor, S4,     ColorSense,     sensorEV3_Color, modeEV3Color_Color)
+#pragma config(Sensor, S1,     Gyrosense,      sensorEV3_Gyro)
 #pragma config(Motor,  motorA,          LeftM,         tmotorEV3_Large, PIDControl, driveLeft, encoder)
 #pragma config(Motor,  motorB,           ,             tmotorEV3_Large, openLoop)
 #pragma config(Motor,  motorC,           ,             tmotorEV3_Large, openLoop)
@@ -12,31 +11,17 @@ task main()
 	* 3 square challenge
 	* Pro Team
 	* Drive around square 3 times
+	* 3.4cm wheel radius
 	*/
-
-    //*backward(3, rotations, 50);
-		//*setMotor(motorA, 25);
-  	//*setMotor(motorD, -25);
-  	//*wait(1, seconds);
-  	//*stopAllMotors();
-	repeat(forever)
+	resetGyro(Gyrosense);
+	repeat(12)
   {
-  	if (SensorValue[ColorSense]==1)
-  		{
-  			forward(1, rotations, 50);
-  			if (SensorValue[GyroSense]>0)
-  				{
-  					//* Right
-  				}
-  			else
-  			{
-  				if (SensorValue[GyroSense]<0)
-  				{
-  					//* Left
-  				}
-  			}
-  		}
-
+  	  forward(3.2, rotations, 50);
+			while(getGyroDegrees(Gyrosense)>= -90)
+      	{
+  	  				turnLeft(2.5, degrees, 25);
+      	}
+			resetGyro(Gyrosense);
   }
 
 }
