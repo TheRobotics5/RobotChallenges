@@ -1,5 +1,5 @@
 #pragma config(Sensor, S1,     Gyrosense,      sensorEV3_Gyro)
-#pragma config(Motor,  motorA,          LeftM,         tmotorEV3_Large, PIDControl, driveLeft, encoder)
+#pragma config(Motor,  motorA,          LeftM,         tmotorEV3_Large, openLoop, driveLeft, encoder)
 #pragma config(Motor,  motorB,           ,             tmotorEV3_Large, openLoop)
 #pragma config(Motor,  motorC,           ,             tmotorEV3_Large, openLoop)
 #pragma config(Motor,  motorD,          RightM,        tmotorEV3_Large, openLoop, driveRight)
@@ -16,7 +16,7 @@ task main()
 	resetGyro(Gyrosense);
 	repeat(12)
   {
-  	  forward(3.2, rotations, 50);
+  	  forward(3.21, rotations, 50);
 			while(getGyroDegrees(Gyrosense)>= -90)
       	{
   	  				turnLeft(2.5, degrees, 25);
