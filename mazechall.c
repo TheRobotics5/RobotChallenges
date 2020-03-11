@@ -12,9 +12,17 @@ task main()
 	//Wheel maths//
 	float circum;
 	circum = 19.949;
+	//First half of course//
+	resetGyro(Gyrosense); //Makes sure gyro starts at 0//
 
-	forward(43.18/circum, rotations, 50); //17 inches, first forward//
-	//first 90 turn//
-	//12 inches, second forward//
+	forward(43.25/circum, rotations, 50); //first forward//
+
+	while(getGyroDegrees(Gyrosense)<= 90) //first turn, right//
+    {
+ 			turnRight(2.5, degrees, 25);
+    }
+  resetGyro(Gyrosense); //Resets gyro for next turn//
+
+	forward(30.5/circum, rotations, 50);//second forward//
 
 }
