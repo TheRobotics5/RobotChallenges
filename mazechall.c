@@ -21,8 +21,21 @@ task main()
     {
  			turnRight(2.5, degrees, 25);
     }
-  resetGyro(Gyrosense); //Resets gyro for next turn//
+  resetGyro(Gyrosense);
 
 	forward(30.5/circum, rotations, 50);//second forward//
 
+	while(getGyroDegrees(Gyrosense)<= 80) //second turn, right//
+    {
+ 			turnRight(2.5, degrees, 25);
+    }
+  resetGyro(Gyrosense);
+
+  forward(38/circum, rotations, 50);//third forward//
+
+  	while(getGyroDegrees(Gyrosense)>= -90) //third turn, left//
+    {
+ 			turnRight(2.5, degrees, 25);
+    }
+  resetGyro(Gyrosense);
 }
